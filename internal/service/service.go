@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/nuomizi-fw/data_horader-go/core"
+	"github.com/nuomizi-fw/data_horader-go/internal/core"
 	"go.uber.org/fx"
 )
 
