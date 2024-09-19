@@ -12,18 +12,18 @@ var Module = fx.Module(
 	),
 )
 
-type StargazerMiddleware interface {
+type DataHoraderMiddleware interface {
 	InitMiddleware()
 }
 
-type StargazerMiddlewares []StargazerMiddleware
+type DataHoraderMiddlewares []DataHoraderMiddleware
 
-func (sm StargazerMiddlewares) InitMiddleware() {
+func (sm DataHoraderMiddlewares) InitMiddleware() {
 	for _, middleware := range sm {
 		middleware.InitMiddleware()
 	}
 }
 
-func NewMiddleware() StargazerMiddlewares {
-	return StargazerMiddlewares{}
+func NewMiddleware() DataHoraderMiddlewares {
+	return DataHoraderMiddlewares{}
 }

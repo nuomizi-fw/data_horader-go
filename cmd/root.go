@@ -7,11 +7,11 @@ import (
 	"syscall"
 
 	"github.com/gofiber/fiber/v2/log"
-	"github.com/nuomizi-fw/stargazer/core"
-	"github.com/nuomizi-fw/stargazer/middleware"
-	"github.com/nuomizi-fw/stargazer/model"
-	"github.com/nuomizi-fw/stargazer/router"
-	"github.com/nuomizi-fw/stargazer/service"
+	"github.com/nuomizi-fw/data_horader-go/core"
+	"github.com/nuomizi-fw/data_horader-go/middleware"
+	"github.com/nuomizi-fw/data_horader-go/model"
+	"github.com/nuomizi-fw/data_horader-go/router"
+	"github.com/nuomizi-fw/data_horader-go/service"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
@@ -19,7 +19,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "stargazer",
+	Use:   "data_horader",
 	Short: "An All-in-One self-hosted solution for your videos, music, manga, novels and more.",
 	Long:  "An All-in-One self-hosted solution for your videos, music, manga, novels and more.",
 	Run: func(cmd *cobra.Command, args []string) {
@@ -34,7 +34,7 @@ var rootCmd = &cobra.Command{
 
 		app := fx.New(
 			fx.WithLogger(func() fxevent.Logger {
-				logger := core.NewStargazerLogger()
+				logger := core.NewDataHoraderLogger()
 				return logger.GetFxLogger()
 			}),
 			core.Module,
@@ -42,7 +42,7 @@ var rootCmd = &cobra.Command{
 			model.Module,
 			router.Module,
 			service.Module,
-			fx.Invoke(StartStargazer),
+			fx.Invoke(StartDataHorader),
 		)
 
 		if err := app.Start(ctx); err != nil {
@@ -55,15 +55,15 @@ var rootCmd = &cobra.Command{
 	},
 }
 
-func StartStargazer(
+func StartDataHorader(
 	lc fx.Lifecycle,
-	config core.StargazerConfig,
-	db core.StargazerDB,
-	logger core.StargazerLogger,
-	server core.StargazerServer,
-	middleware middleware.StargazerMiddlewares,
-	model model.StargazerModel,
-	router router.StargazerRouters,
+	config core.DataHoraderConfig,
+	db core.DataHoraderDB,
+	logger core.DataHoraderLogger,
+	server core.DataHoraderServer,
+	middleware middleware.DataHoraderMiddlewares,
+	model model.DataHoraderModel,
+	router router.DataHoraderRouters,
 ) {
 	lc.Append(fx.Hook{
 		OnStart: func(ctx context.Context) error {

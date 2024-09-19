@@ -9,7 +9,7 @@ export default function App() {
     <Router
       root={(props) => (
         <MetaProvider>
-          <Title>Stargazer</Title>
+          <Title>Data Horader</Title>
           <a href="/">Index</a>
           <a href="/about">About</a>
           <Suspense>{props.children}</Suspense>

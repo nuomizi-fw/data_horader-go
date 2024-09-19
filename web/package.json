@@ -1,5 +1,5 @@
 {
-  "name": "@stargazer/web",
+  "name": "@data_horader/web",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",

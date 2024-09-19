@@ -5,27 +5,27 @@ import (
 
 	jwtware "github.com/gofiber/contrib/jwt"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/nuomizi-fw/stargazer/core"
+	"github.com/nuomizi-fw/data_horader-go/core"
 )
 
 type JWTMiddleware struct {
-	config    core.StargazerConfig
-	logger    core.StargazerLogger
-	stargazer core.StargazerServer
+	config       core.DataHoraderConfig
+	logger       core.DataHoraderLogger
+	data_horader core.DataHoraderServer
 }
 
 func NewJWTMiddleware(
-	config core.StargazerConfig,
-	logger core.StargazerLogger,
-	stargazer core.StargazerServer,
+	config core.DataHoraderConfig,
+	logger core.DataHoraderLogger,
+	data_horader core.DataHoraderServer,
 ) JWTMiddleware {
-	return JWTMiddleware{config, logger, stargazer}
+	return JWTMiddleware{config, logger, data_horader}
 }
 
 func (jm JWTMiddleware) InitMiddleware() {
 	jm.logger.Info("Initializing JWT middleware")
 
-	jm.stargazer.Api.Use(jwtware.New(jwtware.Config{
+	jm.data_horader.Api.Use(jwtware.New(jwtware.Config{
 		SigningKey: jwtware.SigningKey{
 			Key: jm.config.Server.JWT.Secret,
 		},
@@ -68,7 +68,7 @@ func parseToken(secret string, tokenString string) (*Claims, error) {
 }
 
 func GenerateAccessToken(secret string, id int, username string) (string, error) {
-	return generateToken(secret, "stargazer-access", id, username)
+	return generateToken(secret, "data_horader-access", id, username)
 }
 
 func GenerateRefreshToken(secret string, id int, username string) (string, error) {

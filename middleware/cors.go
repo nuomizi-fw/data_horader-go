@@ -1,19 +1,19 @@
 package middleware
 
-import "github.com/nuomizi-fw/stargazer/core"
+import "github.com/nuomizi-fw/data_horader-go/core"
 
 type CorsMiddleware struct {
-	config    core.StargazerConfig
-	logger    core.StargazerLogger
-	stargazer core.StargazerServer
+	config       core.DataHoraderConfig
+	logger       core.DataHoraderLogger
+	data_horader core.DataHoraderServer
 }
 
 func NewCorsMiddleware(
-	config core.StargazerConfig,
-	logger core.StargazerLogger,
-	stargazer core.StargazerServer,
+	config core.DataHoraderConfig,
+	logger core.DataHoraderLogger,
+	data_horader core.DataHoraderServer,
 ) CorsMiddleware {
-	return CorsMiddleware{config, logger, stargazer}
+	return CorsMiddleware{config, logger, data_horader}
 }
 
 func (cm CorsMiddleware) InitMiddleware() {

@@ -1,4 +1,4 @@
-# Stargazer
+# Data Horader
 
 An All-in-One self-hosted solution for your videos, music, manga, novels and more.
 

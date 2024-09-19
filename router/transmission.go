@@ -1,16 +1,16 @@
 package router
 
-import "github.com/nuomizi-fw/stargazer/core"
+import "github.com/nuomizi-fw/data_horader-go/core"
 
 type TransmissionRouter struct {
-	stargazer core.StargazerServer
-	logger    core.StargazerLogger
+	data_horader core.DataHoraderServer
+	logger       core.DataHoraderLogger
 }
 
-func NewTransmissionRouter(stargazer core.StargazerServer, logger core.StargazerLogger) TransmissionRouter {
+func NewTransmissionRouter(data_horader core.DataHoraderServer, logger core.DataHoraderLogger) TransmissionRouter {
 	return TransmissionRouter{
-		stargazer: stargazer,
-		logger:    logger,
+		data_horader: data_horader,
+		logger:       logger,
 	}
 }
 

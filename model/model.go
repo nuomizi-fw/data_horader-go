@@ -1,20 +1,20 @@
 package model
 
 import (
-	"github.com/nuomizi-fw/stargazer/core"
+	"github.com/nuomizi-fw/data_horader-go/core"
 	"go.uber.org/fx"
 )
 
-var Module = fx.Module("model", fx.Provide(NewStargazerModels))
+var Module = fx.Module("model", fx.Provide(NewDataHoraderModels))
 
-type StargazerModel struct {
+type DataHoraderModel struct {
 	models []interface{}
-	db     core.StargazerDB
-	logger core.StargazerLogger
-	config core.StargazerConfig
+	db     core.DataHoraderDB
+	logger core.DataHoraderLogger
+	config core.DataHoraderConfig
 }
 
-func (sm StargazerModel) AutoMigrate() {
+func (sm DataHoraderModel) AutoMigrate() {
 	if !sm.config.Database.Migrate {
 		sm.logger.Info("Database migration is disabled")
 		return
@@ -26,12 +26,12 @@ func (sm StargazerModel) AutoMigrate() {
 	}
 }
 
-func NewStargazerModels(
-	db core.StargazerDB,
-	logger core.StargazerLogger,
-	config core.StargazerConfig,
-) StargazerModel {
-	return StargazerModel{
+func NewDataHoraderModels(
+	db core.DataHoraderDB,
+	logger core.DataHoraderLogger,
+	config core.DataHoraderConfig,
+) DataHoraderModel {
+	return DataHoraderModel{
 		db:     db,
 		logger: logger,
 		config: config,

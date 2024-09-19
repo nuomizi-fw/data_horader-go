@@ -1,4 +1,4 @@
-module github.com/nuomizi-fw/stargazer
+module github.com/nuomizi-fw/data_horader-go
 
 go 1.23
 

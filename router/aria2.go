@@ -1,18 +1,18 @@
 package router
 
 import (
-	"github.com/nuomizi-fw/stargazer/core"
+	"github.com/nuomizi-fw/data_horader-go/core"
 )
 
 type Aria2Router struct {
-	stargazer core.StargazerServer
-	logger    core.StargazerLogger
+	data_horader core.DataHoraderServer
+	logger       core.DataHoraderLogger
 }
 
-func NewAria2Router(stargazer core.StargazerServer, logger core.StargazerLogger) Aria2Router {
+func NewAria2Router(data_horader core.DataHoraderServer, logger core.DataHoraderLogger) Aria2Router {
 	return Aria2Router{
-		stargazer: stargazer,
-		logger:    logger,
+		data_horader: data_horader,
+		logger:       logger,
 	}
 }
 

@@ -240,9 +240,9 @@ fabric.properties
 .output
 .vinxi
 
-# Stargazer specific
-stargazer.db
-stargazer.toml
+# data_horader specific
+data_horader.db
+data_horader.toml
 
 ## Panda
 styled-system

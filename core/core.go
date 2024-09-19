@@ -6,10 +6,10 @@ var Module = fx.Module(
 	"core",
 	fx.Options(
 		fx.Provide(
-			NewStargazerConfig,
-			NewStargazerDB,
-			NewStargazerLogger,
-			NewStargazerServer,
+			NewDataHoraderConfig,
+			NewDataHoraderDB,
+			NewDataHoraderLogger,
+			NewDataHoraderServer,
 		),
 	),
 )

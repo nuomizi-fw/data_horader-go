@@ -14,28 +14,28 @@ import (
 
 var zapLogger *zap.Logger
 
-type StargazerLogger struct {
+type DataHoraderLogger struct {
 	*zap.SugaredLogger
 }
 
 type GormLogger struct {
-	*StargazerLogger
+	*DataHoraderLogger
 	gormlogger.Config
 }
 
 type FxLogger struct {
-	*StargazerLogger
+	*DataHoraderLogger
 }
 
 type FiberLogger struct {
-	*StargazerLogger
+	*DataHoraderLogger
 }
 
-func NewStargazerLogger() StargazerLogger {
-	return newStargazerLogger(NewStargazerConfig())
+func NewDataHoraderLogger() DataHoraderLogger {
+	return newDataHoraderLogger(NewDataHoraderConfig())
 }
 
-func newStargazerLogger(config StargazerConfig) StargazerLogger {
+func newDataHoraderLogger(config DataHoraderConfig) DataHoraderLogger {
 	var zapConfig zap.Config
 
 	if _, err := os.Stat(config.Logger.LogPath); os.IsNotExist(err) {
@@ -73,23 +73,23 @@ func newStargazerLogger(config StargazerConfig) StargazerLogger {
 
 	zapLogger, _ = zapConfig.Build()
 
-	return *newStargazerSugaredLogger(zapLogger)
+	return *newDataHoraderSugaredLogger(zapLogger)
 }
 
-func newStargazerSugaredLogger(logger *zap.Logger) *StargazerLogger {
-	return &StargazerLogger{
+func newDataHoraderSugaredLogger(logger *zap.Logger) *DataHoraderLogger {
+	return &DataHoraderLogger{
 		SugaredLogger: logger.Sugar(),
 	}
 }
 
-func (l *StargazerLogger) GetGormLogger() gormlogger.Interface {
+func (l *DataHoraderLogger) GetGormLogger() gormlogger.Interface {
 	logger := zapLogger.WithOptions(
 		zap.AddCaller(),
 		zap.AddCallerSkip(3),
 	)
 
 	return &GormLogger{
-		StargazerLogger: newStargazerSugaredLogger(logger),
+		DataHoraderLogger: newDataHoraderSugaredLogger(logger),
 		Config: gormlogger.Config{
 			LogLevel: gormlogger.Info,
 		},
@@ -97,75 +97,75 @@ func (l *StargazerLogger) GetGormLogger() gormlogger.Interface {
 }
 
 // GetFxLogger gets logger for go-fx
-func (l *StargazerLogger) GetFxLogger() fxevent.Logger {
+func (l *DataHoraderLogger) GetFxLogger() fxevent.Logger {
 	logger := zapLogger.WithOptions(
 		zap.WithCaller(false),
 	)
-	return &FxLogger{newStargazerSugaredLogger(logger)}
+	return &FxLogger{newDataHoraderSugaredLogger(logger)}
 }
 
 func (l *FxLogger) LogEvent(event fxevent.Event) {
 	switch e := event.(type) {
 	case *fxevent.OnStartExecuting:
-		l.StargazerLogger.Debug("OnStart hook executing: ",
+		l.DataHoraderLogger.Debug("OnStart hook executing: ",
 			zap.String("callee", e.FunctionName),
 			zap.String("caller", e.CallerName),
 		)
 	case *fxevent.OnStartExecuted:
 		if e.Err != nil {
-			l.StargazerLogger.Debug("OnStart hook failed: ",
+			l.DataHoraderLogger.Debug("OnStart hook failed: ",
 				zap.String("callee", e.FunctionName),
 				zap.String("caller", e.CallerName),
 				zap.Error(e.Err),
 			)
 		} else {
-			l.StargazerLogger.Debug("OnStart hook executed: ",
+			l.DataHoraderLogger.Debug("OnStart hook executed: ",
 				zap.String("callee", e.FunctionName),
 				zap.String("caller", e.CallerName),
 				zap.String("runtime", e.Runtime.String()),
 			)
 		}
 	case *fxevent.OnStopExecuting:
-		l.StargazerLogger.Debug("OnStop hook executing: ",
+		l.DataHoraderLogger.Debug("OnStop hook executing: ",
 			zap.String("callee", e.FunctionName),
 			zap.String("caller", e.CallerName),
 		)
 	case *fxevent.OnStopExecuted:
 		if e.Err != nil {
-			l.StargazerLogger.Debug("OnStop hook failed: ",
+			l.DataHoraderLogger.Debug("OnStop hook failed: ",
 				zap.String("callee", e.FunctionName),
 				zap.String("caller", e.CallerName),
 				zap.Error(e.Err),
 			)
 		} else {
-			l.StargazerLogger.Debug("OnStop hook executed: ",
+			l.DataHoraderLogger.Debug("OnStop hook executed: ",
 				zap.String("callee", e.FunctionName),
 				zap.String("caller", e.CallerName),
 				zap.String("runtime", e.Runtime.String()),
 			)
 		}
 	case *fxevent.Supplied:
-		l.StargazerLogger.Debug("supplied: ", zap.String("type", e.TypeName), zap.Error(e.Err))
+		l.DataHoraderLogger.Debug("supplied: ", zap.String("type", e.TypeName), zap.Error(e.Err))
 	case *fxevent.Provided:
 		for _, rtype := range e.OutputTypeNames {
-			l.StargazerLogger.Debug("provided: ", e.ConstructorName, " => ", rtype)
+			l.DataHoraderLogger.Debug("provided: ", e.ConstructorName, " => ", rtype)
 		}
 	case *fxevent.Decorated:
 		for _, rtype := range e.OutputTypeNames {
-			l.StargazerLogger.Debug("decorated: ",
+			l.DataHoraderLogger.Debug("decorated: ",
 				zap.String("decorator", e.DecoratorName),
 				zap.String("type", rtype),
 			)
 		}
 	case *fxevent.Invoking:
-		l.StargazerLogger.Debug("invoking: ", e.FunctionName)
+		l.DataHoraderLogger.Debug("invoking: ", e.FunctionName)
 	case *fxevent.Started:
 		if e.Err == nil {
-			l.StargazerLogger.Debug("started")
+			l.DataHoraderLogger.Debug("started")
 		}
 	case *fxevent.LoggerInitialized:
 		if e.Err == nil {
-			l.StargazerLogger.Debug("initialized: custom fxevent.Logger -> ", e.ConstructorName)
+			l.DataHoraderLogger.Debug("initialized: custom fxevent.Logger -> ", e.ConstructorName)
 		}
 	}
 }

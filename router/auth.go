@@ -2,32 +2,32 @@ package router
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/nuomizi-fw/stargazer/core"
-	"github.com/nuomizi-fw/stargazer/service"
+	"github.com/nuomizi-fw/data_horader-go/core"
+	"github.com/nuomizi-fw/data_horader-go/service"
 )
 
 type AuthRouter struct {
-	stargazer core.StargazerServer
-	logger    core.StargazerLogger
-	auth      service.AuthService
+	data_horader core.DataHoraderServer
+	logger       core.DataHoraderLogger
+	auth         service.AuthService
 }
 
 func NewAuthRouter(
-	stargazer core.StargazerServer,
-	logger core.StargazerLogger,
+	data_horader core.DataHoraderServer,
+	logger core.DataHoraderLogger,
 	auth service.AuthService,
 ) AuthRouter {
 	return AuthRouter{
-		stargazer: stargazer,
-		logger:    logger,
-		auth:      auth,
+		data_horader: data_horader,
+		logger:       logger,
+		auth:         auth,
 	}
 }
 
 func (ar AuthRouter) InitRouter() {
 	ar.logger.Info("Initializing auth router")
 
-	auth := ar.stargazer.App.Group("/auth")
+	auth := ar.data_horader.App.Group("/auth")
 	{
 		auth.Post("/register", ar.Register)
 		auth.Post("/login", ar.Login)

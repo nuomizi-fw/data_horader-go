@@ -1,16 +1,16 @@
 package router
 
-import "github.com/nuomizi-fw/stargazer/core"
+import "github.com/nuomizi-fw/data_horader-go/core"
 
 type RssRouter struct {
-	stargazer core.StargazerServer
-	logger    core.StargazerLogger
+	data_horader core.DataHoraderServer
+	logger       core.DataHoraderLogger
 }
 
-func NewRssRouter(stargazer core.StargazerServer, logger core.StargazerLogger) RssRouter {
+func NewRssRouter(data_horader core.DataHoraderServer, logger core.DataHoraderLogger) RssRouter {
 	return RssRouter{
-		stargazer: stargazer,
-		logger:    logger,
+		data_horader: data_horader,
+		logger:       logger,
 	}
 }
 

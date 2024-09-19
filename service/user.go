@@ -1,6 +1,6 @@
 package service
 
-import "github.com/nuomizi-fw/stargazer/core"
+import "github.com/nuomizi-fw/data_horader-go/core"
 
 type UserService interface {
 	GetUser() error
@@ -14,13 +14,13 @@ type UserService interface {
 }
 
 type userService struct {
-	db     core.StargazerDB
-	logger core.StargazerLogger
+	db     core.DataHoraderDB
+	logger core.DataHoraderLogger
 }
 
 func NewUserService(
-	db core.StargazerDB,
-	logger core.StargazerLogger,
+	db core.DataHoraderDB,
+	logger core.DataHoraderLogger,
 ) UserService {
 	return &userService{db, logger}
 }

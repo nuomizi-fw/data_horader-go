@@ -2,25 +2,25 @@ package router
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/nuomizi-fw/stargazer/core"
+	"github.com/nuomizi-fw/data_horader-go/core"
 )
 
 type BangumiRouter struct {
-	stargazer core.StargazerServer
-	logger    core.StargazerLogger
+	data_horader core.DataHoraderServer
+	logger       core.DataHoraderLogger
 }
 
-func NewBangumiRouter(stargazer core.StargazerServer, logger core.StargazerLogger) BangumiRouter {
+func NewBangumiRouter(data_horader core.DataHoraderServer, logger core.DataHoraderLogger) BangumiRouter {
 	return BangumiRouter{
-		stargazer: stargazer,
-		logger:    logger,
+		data_horader: data_horader,
+		logger:       logger,
 	}
 }
 
 func (br BangumiRouter) InitRouter() {
 	br.logger.Info("Initializing bangumi router")
 
-	bangumi := br.stargazer.Api.Group("/bangumi")
+	bangumi := br.data_horader.Api.Group("/bangumi")
 	{
 		bangumi.Post("/scan", br.ScanBangumi)
 

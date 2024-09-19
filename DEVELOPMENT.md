@@ -1,8 +1,8 @@
-# Stargazer Development Guide
+# Data Horader Development Guide
 
-Here we will describe the steps required to setup a development environment with Stargazer.  
+Here we will describe the steps required to setup a development environment with Data Horader.  
 
-- [Stargazer Development Guide](#stargazer-development-guide)
+- [Data Horader Development Guide](#data_horader-development-guide)
   - [Setting up a development environment](#setting-up-a-development-environment)
     - [Pre-requisites](#pre-requisites)
     - [1. Fork the Repo](#1-fork-the-repo)

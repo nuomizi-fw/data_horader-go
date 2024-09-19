@@ -1,6 +1,6 @@
 package service
 
-import "github.com/nuomizi-fw/stargazer/core"
+import "github.com/nuomizi-fw/data_horader-go/core"
 
 type AuthService interface {
 	Register() error
@@ -10,13 +10,13 @@ type AuthService interface {
 }
 
 type authService struct {
-	db     core.StargazerDB
-	logger core.StargazerLogger
+	db     core.DataHoraderDB
+	logger core.DataHoraderLogger
 }
 
 func NewAuthService(
-	db core.StargazerDB,
-	logger core.StargazerLogger,
+	db core.DataHoraderDB,
+	logger core.DataHoraderLogger,
 ) AuthService {
 	return &authService{db, logger}
 }

@@ -7,7 +7,7 @@ import (
 var Module = fx.Module(
 	"router",
 	fx.Provide(
-		NewStargazerRouter,
+		NewDataHoraderRouter,
 	),
 	// Add new router below
 	fx.Provide(
@@ -23,19 +23,19 @@ var Module = fx.Module(
 	),
 )
 
-type StargazerRouter interface {
+type DataHoraderRouter interface {
 	InitRouter()
 }
 
-type StargazerRouters []StargazerRouter
+type DataHoraderRouters []DataHoraderRouter
 
-func (sr StargazerRouters) InitRouter() {
+func (sr DataHoraderRouters) InitRouter() {
 	for _, router := range sr {
 		router.InitRouter()
 	}
 }
 
-func NewStargazerRouter(
+func NewDataHoraderRouter(
 	authRouter AuthRouter,
 	userRouter UserRouter,
 	aria2Router Aria2Router,
@@ -45,8 +45,8 @@ func NewStargazerRouter(
 	novelRouter NovelRouter,
 	searchRouter SearchRouter,
 	bangumiRouter BangumiRouter,
-) StargazerRouters {
-	return StargazerRouters{
+) DataHoraderRouters {
+	return DataHoraderRouters{
 		authRouter,
 		userRouter,
 		aria2Router,

@@ -1,14 +1,14 @@
 package service
 
 import (
-	"github.com/nuomizi-fw/stargazer/core"
+	"github.com/nuomizi-fw/data_horader-go/core"
 	"go.uber.org/fx"
 )
 
 var Module = fx.Module(
 	"service",
 	fx.Options(
-		fx.Provide(NewStargazerService),
+		fx.Provide(NewDataHoraderService),
 		// Add new service below
 		fx.Provide(
 			NewAuthService,
@@ -25,7 +25,7 @@ var Module = fx.Module(
 	),
 )
 
-type StargazerService struct {
+type DataHoraderService struct {
 	auth         AuthService
 	user         UserService
 	rss          RssService
@@ -38,11 +38,11 @@ type StargazerService struct {
 	bangumi      BangumiService
 }
 
-func NewStargazerService(
-	db core.StargazerDB,
-	logger core.StargazerLogger,
-) StargazerService {
-	return StargazerService{
+func NewDataHoraderService(
+	db core.DataHoraderDB,
+	logger core.DataHoraderLogger,
+) DataHoraderService {
+	return DataHoraderService{
 		auth:       NewAuthService(db, logger),
 		user:       NewUserService(db, logger),
 		aria2:      NewAria2Service(),

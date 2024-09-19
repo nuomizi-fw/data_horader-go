@@ -1,16 +1,16 @@
 package router
 
-import "github.com/nuomizi-fw/stargazer/core"
+import "github.com/nuomizi-fw/data_horader-go/core"
 
 type MusicRouter struct {
-	stargazer core.StargazerServer
-	logger    core.StargazerLogger
+	data_horader core.DataHoraderServer
+	logger       core.DataHoraderLogger
 }
 
-func NewMusicRouter(stargazer core.StargazerServer, logger core.StargazerLogger) MusicRouter {
+func NewMusicRouter(data_horader core.DataHoraderServer, logger core.DataHoraderLogger) MusicRouter {
 	return MusicRouter{
-		stargazer: stargazer,
-		logger:    logger,
+		data_horader: data_horader,
+		logger:       logger,
 	}
 }
 

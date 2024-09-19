@@ -42,14 +42,14 @@ type Logger struct {
 	LogExt   string `mapstructure:"log_ext"`
 }
 
-type StargazerConfig struct {
+type DataHoraderConfig struct {
 	Server   Server
 	Database Database
 	Logger   Logger
 }
 
-func defaultStargazerConfig() StargazerConfig {
-	return StargazerConfig{
+func defaultDataHoraderConfig() DataHoraderConfig {
+	return DataHoraderConfig{
 		Server: Server{
 			Port:    "11451",
 			Debug:   true,
@@ -71,36 +71,36 @@ func defaultStargazerConfig() StargazerConfig {
 			JWT: struct {
 				Secret string
 			}{
-				Secret: "stargazer",
+				Secret: "data_horader",
 			},
 		},
 		Database: Database{
 			Type:        "sqlite3",
 			Port:        0,
-			DBFile:      "stargazer.db",
+			DBFile:      "data_horader.db",
 			TablePrefix: "sg_",
 			Migrate:     true,
 		},
 		Logger: Logger{
 			LogLevel: "debug",
 			LogPath:  "logs",
-			LogName:  "stargazer",
+			LogName:  "data_horader",
 			LogExt:   "log",
 		},
 	}
 }
 
-func NewStargazerConfig() StargazerConfig {
+func NewDataHoraderConfig() DataHoraderConfig {
 	v := viper.New()
 	v.AddConfigPath(".")
-	v.AddConfigPath("$HOME/.config/.stargazer")
-	v.AddConfigPath("/etc/stargazer")
-	v.SetConfigName("stargazer")
+	v.AddConfigPath("$HOME/.config/.data_horader")
+	v.AddConfigPath("/etc/data_horader")
+	v.SetConfigName("data_horader")
 	v.SetConfigType("toml")
 
 	if err := v.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
-			if err = v.SafeWriteConfigAs("stargazer.toml"); err != nil {
+			if err = v.SafeWriteConfigAs("data_horader.toml"); err != nil {
 				log.Fatalf("Failed to write config: %s", err)
 			}
 		} else {
@@ -108,7 +108,7 @@ func NewStargazerConfig() StargazerConfig {
 		}
 	}
 
-	config := defaultStargazerConfig()
+	config := defaultDataHoraderConfig()
 
 	if err := v.Unmarshal(&config); err != nil {
 		log.Fatalf("Failed to unmarshal config: %s", err)

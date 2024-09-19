@@ -2,18 +2,18 @@ package router
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/nuomizi-fw/stargazer/core"
+	"github.com/nuomizi-fw/data_horader-go/core"
 )
 
 type UserRouter struct {
-	stargazer core.StargazerServer
-	logger    core.StargazerLogger
+	data_horader core.DataHoraderServer
+	logger       core.DataHoraderLogger
 }
 
-func NewUserRouter(stargazer core.StargazerServer, logger core.StargazerLogger) UserRouter {
+func NewUserRouter(data_horader core.DataHoraderServer, logger core.DataHoraderLogger) UserRouter {
 	return UserRouter{
-		stargazer: stargazer,
-		logger:    logger,
+		data_horader: data_horader,
+		logger:       logger,
 	}
 }
 

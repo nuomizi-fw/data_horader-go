@@ -12,18 +12,18 @@ key_file = "key.pem"
 enable = true
 
 [server.jwt]
-secret = "stargazer"
+secret = "data_horader"
 
 
 [database]
 type = "sqlite3"
 port = 0
-db_file = "stargazer.db"
+db_file = "data_horader.db"
 table_prefix = "sg_"
 migrate = true
 
 [logger]
 log_level = "debug"
 log_path = "logs"
-log_name = "stargazer"
+log_name = "data_horader"
 log_ext = "log"

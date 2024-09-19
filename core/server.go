@@ -11,18 +11,18 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
-type StargazerServer struct {
+type DataHoraderServer struct {
 	App *fiber.App
 	Api fiber.Router
 }
 
-func NewStargazerServer(config StargazerConfig, sl StargazerLogger) StargazerServer {
+func NewDataHoraderServer(config DataHoraderConfig, sl DataHoraderLogger) DataHoraderServer {
 	app := fiber.New(fiber.Config{
 		Prefork:               config.Server.Prefork,
 		CaseSensitive:         true,
 		StrictRouting:         true,
-		ServerHeader:          "Stargazer",
-		AppName:               "Stargazer",
+		ServerHeader:          "DataHorader",
+		AppName:               "DataHorader",
 		EnablePrintRoutes:     true,
 		DisableStartupMessage: true,
 		JSONEncoder:           sonic.Marshal,
@@ -43,7 +43,7 @@ func NewStargazerServer(config StargazerConfig, sl StargazerLogger) StargazerSer
 
 	apiGroup := app.Group("/api")
 
-	return StargazerServer{
+	return DataHoraderServer{
 		App: app,
 		Api: apiGroup,
 	}

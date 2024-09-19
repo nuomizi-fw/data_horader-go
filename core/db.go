@@ -7,11 +7,11 @@ import (
 	"gorm.io/gorm"
 )
 
-type StargazerDB struct {
+type DataHoraderDB struct {
 	*gorm.DB
 }
 
-func NewStargazerDB(config StargazerConfig, logger StargazerLogger) StargazerDB {
+func NewDataHoraderDB(config DataHoraderConfig, logger DataHoraderLogger) DataHoraderDB {
 	db, err := gorm.Open(sqlite.Open(config.Database.DBFile), &gorm.Config{
 		Logger: logger.GetGormLogger(),
 	})
@@ -24,5 +24,5 @@ func NewStargazerDB(config StargazerConfig, logger StargazerLogger) StargazerDB 
 	c.SetMaxOpenConns(1)
 	c.SetConnMaxIdleTime(time.Second * 1000)
 
-	return StargazerDB{db}
+	return DataHoraderDB{db}
 }
