@@ -1,0 +1,29 @@
+[server]
+port = ":11451"
+debug = true
+prefork = false
+
+[server.tls]
+enable = false
+cert_file = "cert.pem"
+key_file = "key.pem"
+
+[server.cors]
+enable = true
+
+[server.jwt]
+secret = "stargazer"
+
+
+[database]
+type = "sqlite3"
+port = 0
+db_file = "stargazer.db"
+table_prefix = "sg_"
+migrate = true
+
+[logger]
+log_level = "debug"
+log_path = "logs"
+log_name = "stargazer"
+log_ext = "log"

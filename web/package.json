@@ -1,0 +1,29 @@
+{
+  "name": "@stargazer/web",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "version": "vinxi version",
+    "prepare": "panda codegen"
+  },
+  "dependencies": {
+    "@ark-ui/solid": "^3.9.0",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.14.3",
+    "@solidjs/start": "^1.0.6",
+    "@tanstack/solid-store": "^0.5.5",
+    "ky": "^1.7.1",
+    "lucide-solid": "^0.418.0",
+    "solid-js": "^1.8.22",
+    "vinxi": "^0.4.2"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.45.2",
+    "@park-ui/panda-preset": "^0.42.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.42",
+    "vite-tsconfig-paths": "^5.0.1"
+  }
+}
