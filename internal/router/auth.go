@@ -2,8 +2,8 @@ package router
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/nuomizi-fw/data_horader-go/core"
-	"github.com/nuomizi-fw/data_horader-go/service"
+	"github.com/nuomizi-fw/data_horader-go/internal/core"
+	"github.com/nuomizi-fw/data_horader-go/internal/service"
 )
 
 type AuthRouter struct {

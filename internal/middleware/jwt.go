@@ -5,7 +5,7 @@ import (
 
 	jwtware "github.com/gofiber/contrib/jwt"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/nuomizi-fw/data_horader-go/core"
+	"github.com/nuomizi-fw/data_horader-go/internal/core"
 )
 
 type JWTMiddleware struct {

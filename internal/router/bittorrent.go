@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/nuomizi-fw/data_horader-go/core"
+	"github.com/nuomizi-fw/data_horader-go/internal/core"
 )
 
 type BittorrentRouter struct {

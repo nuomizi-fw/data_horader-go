@@ -1,6 +1,6 @@
 package service
 
-import "github.com/nuomizi-fw/data_horader-go/core"
+import "github.com/nuomizi-fw/data_horader-go/internal/core"
 
 type AuthService interface {
 	Register() error

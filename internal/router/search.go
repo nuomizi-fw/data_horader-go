@@ -1,6 +1,6 @@
 package router
 
-import "github.com/nuomizi-fw/data_horader-go/core"
+import "github.com/nuomizi-fw/data_horader-go/internal/core"
 
 type SearchRouter struct {
 	data_horader core.DataHoraderServer
