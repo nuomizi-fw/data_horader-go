@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/nuomizi-fw/data_horader-go/core"
+	"github.com/nuomizi-fw/data-horader/core"
 	"go.uber.org/fx"
 )
 
@@ -36,10 +36,7 @@ func NewDataHoraderModels(
 		logger: logger,
 		config: config,
 		models: []interface{}{
-			&User{},
-			&Bangumi{},
-			&Season{},
-			&CastMember{},
+			&Torrent{},
 		},
 	}
 }

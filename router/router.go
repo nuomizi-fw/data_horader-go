@@ -11,15 +11,7 @@ var Module = fx.Module(
 	),
 	// Add new router below
 	fx.Provide(
-		NewAuthRouter,
-		NewUserRouter,
-		NewAria2Router,
-		NewBittorrentRouter,
-		NewMangaRouter,
-		NewMusicRouter,
-		NewNovelRouter,
-		NewSearchRouter,
-		NewBangumiRouter,
+		NewTorrentRouter,
 	),
 )
 
@@ -36,25 +28,9 @@ func (sr DataHoraderRouters) InitRouter() {
 }
 
 func NewDataHoraderRouter(
-	authRouter AuthRouter,
-	userRouter UserRouter,
-	aria2Router Aria2Router,
-	bittorrentRouter BittorrentRouter,
-	mangaRouter MangaRouter,
-	musicRouter MusicRouter,
-	novelRouter NovelRouter,
-	searchRouter SearchRouter,
-	bangumiRouter BangumiRouter,
+	torrentRouter TorrentRouter,
 ) DataHoraderRouters {
 	return DataHoraderRouters{
-		authRouter,
-		userRouter,
-		aria2Router,
-		bittorrentRouter,
-		mangaRouter,
-		musicRouter,
-		novelRouter,
-		searchRouter,
-		bangumiRouter,
+		torrentRouter,
 	}
 }

@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/nuomizi-fw/data_horader-go/core"
+	"github.com/nuomizi-fw/data-horader/core"
 	"go.uber.org/fx"
 )
 
@@ -11,31 +11,13 @@ var Module = fx.Module(
 		fx.Provide(NewDataHoraderService),
 		// Add new service below
 		fx.Provide(
-			NewAuthService,
-			NewUserService,
-			NewAria2Service,
-			NewBittorrentService,
-			NewTransmissionService,
-			NewMangaService,
-			NewMusicService,
-			NewNovelService,
-			NewSearchService,
-			NewBangumiService,
+			NewTorrentService,
 		),
 	),
 )
 
 type DataHoraderService struct {
-	auth         AuthService
-	user         UserService
-	rss          RssService
-	aria2        Aria2Service
-	bittorrent   BittorrentService
-	transmission TransmissionService
-	manga        MangaService
-	music        MusicService
-	search       SearchService
-	bangumi      BangumiService
+	torrent TorrentService
 }
 
 func NewDataHoraderService(
@@ -43,13 +25,6 @@ func NewDataHoraderService(
 	logger core.DataHoraderLogger,
 ) DataHoraderService {
 	return DataHoraderService{
-		auth:       NewAuthService(db, logger),
-		user:       NewUserService(db, logger),
-		aria2:      NewAria2Service(),
-		bittorrent: NewBittorrentService(),
-		manga:      NewMangaService(),
-		music:      NewMusicService(),
-		search:     NewSearchService(),
-		bangumi:    NewBangumiService(),
+		torrent: NewTorrentService(db, logger),
 	}
 }

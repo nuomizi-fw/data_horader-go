@@ -1,6 +1,6 @@
 package middleware
 
-import "github.com/nuomizi-fw/data_horader-go/core"
+import "github.com/nuomizi-fw/data-horader/core"
 
 type CorsMiddleware struct {
 	config       core.DataHoraderConfig

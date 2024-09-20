@@ -1,6 +1,6 @@
 package main
 
-import "github.com/nuomizi-fw/data_horader-go/cmd"
+import "github.com/nuomizi-fw/data-horader/cmd"
 
 func main() {
 	cmd.Execute()

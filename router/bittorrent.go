@@ -1,21 +1,21 @@
 package router
 
 import (
-	"github.com/nuomizi-fw/data_horader-go/core"
+	"github.com/nuomizi-fw/data-horader/core"
 )
 
-type BittorrentRouter struct {
+type TorrentRouter struct {
 	data_horader core.DataHoraderServer
 	logger       core.DataHoraderLogger
 }
 
-func NewBittorrentRouter(data_horader core.DataHoraderServer, logger core.DataHoraderLogger) BittorrentRouter {
-	return BittorrentRouter{
+func NewTorrentRouter(data_horader core.DataHoraderServer, logger core.DataHoraderLogger) TorrentRouter {
+	return TorrentRouter{
 		data_horader: data_horader,
 		logger:       logger,
 	}
 }
 
-func (br BittorrentRouter) InitRouter() {
-	br.logger.Info("Initializing bittorrent router")
+func (tr TorrentRouter) InitRouter() {
+	tr.logger.Info("Initializing torrent router")
 }

@@ -1,4 +1,4 @@
-module github.com/nuomizi-fw/data_horader-go
+module github.com/nuomizi-fw/data-horader
 
 go 1.23
 
@@ -6,9 +6,7 @@ require (
 	github.com/bytedance/sonic v1.12.2
 	github.com/glebarez/sqlite v1.11.0
 	github.com/gofiber/contrib/fiberzap/v2 v2.1.4
-	github.com/gofiber/contrib/jwt v1.0.10
 	github.com/gofiber/fiber/v2 v2.52.5
-	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.19.0
 	go.uber.org/fx v1.22.2
@@ -17,7 +15,6 @@ require (
 )
 
 require (
-	github.com/MicahParks/keyfunc/v2 v2.1.0 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/bytedance/sonic/loader v0.2.0 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
