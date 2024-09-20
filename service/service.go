@@ -9,15 +9,11 @@ var Module = fx.Module(
 	"service",
 	fx.Options(
 		fx.Provide(NewDataHoraderService),
-		// Add new service below
-		fx.Provide(
-			NewTorrentService,
-		),
 	),
 )
 
 type DataHoraderService struct {
-	torrent TorrentService
+	horader HoraderService
 }
 
 func NewDataHoraderService(
@@ -25,6 +21,6 @@ func NewDataHoraderService(
 	logger core.DataHoraderLogger,
 ) DataHoraderService {
 	return DataHoraderService{
-		torrent: NewTorrentService(db, logger),
+		horader: NewHoraderService(db, logger),
 	}
 }

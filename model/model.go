@@ -36,7 +36,7 @@ func NewDataHoraderModels(
 		logger: logger,
 		config: config,
 		models: []interface{}{
-			&Torrent{},
+			&Horader{},
 		},
 	}
 }
